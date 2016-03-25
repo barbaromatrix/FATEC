@@ -19,8 +19,7 @@ public class Media {
      * @return Média simples de um conjunto de elementos
      */
     public double media(double[] elementos){
-        int soma = 0;
-        soma = (int)soma(elementos, elementos.length - 1);
+        double soma = soma(elementos, elementos.length - 1);
         return soma/elementos.length;
     }
     
@@ -34,9 +33,7 @@ public class Media {
         return 0;
     }
     
-    public void arredondaNumero(String numero){
-        
-    }
+    // Formato de classe: [160;164[
     
     /**
      * 
