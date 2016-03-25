@@ -5,73 +5,71 @@
  */
 package Index;
 
+import java.util.Arrays;
+
+
+
 /**
  *
  * @author barbaromatrix
  */
 public class mergesort {
-    public static void merge(int[] array, int inicio, int fim) {
-	if (fim <= inicio) {
-		return;
-	}
+     public static void main(String[] args) {
+        int[] list = {14, 32, -67, 76, 23, 41, 580, 85};
         
-        //Divido o vetor em 2 para saber a quantidade de termos
-	int meio = (inicio + fim) / 2;
-        
-        //I haven't undestood at all
-        merge(array, inicio, meio);
-	merge(array, meio + 1, fim);
-        
-        //Crio o primeiro vetor para comparar a primeira parte
-	int[] A = new int[meio - inicio + 1];
-        System.out.println("meio:" + meio);
-        
-        //Crio o primeiro vetor para comparar a segunda parte
-	int[] B = new int[fim - meio];
-        
-        //Adiciono nos vetores
-	for (int i = 0; i <= meio - inicio; i++) {
-		A[i] = array[inicio + i];
-	}
-	for (int i = 0; i <= fim - meio - 1; i++) {
-		B[i] = array[meio + 1 + i];
-	}
-        
-        //Variáveis de controle
-	int i = 0;
-	int j = 0;
-        
-        //For para iteração sobre elementos
-	for (int k = inicio; k <= fim; k++) {
-            // Verifico se 
-            if (i < A.length && j < B.length) 
-            {
-                //Faço a comparação do primeiro vetor com o segundo, para saber qual é maior
-		if (A[i] < B[j]) {
-			array[k] = A[i++];
-		} else {
-			array[k] = B[j++];
-                }
+         System.out.println("Antes: \t\t" + Arrays.toString(list));
+         
+         System.out.println("");
+        mergeSort(list);
+        System.out.println("Depois: \t" + Arrays.toString(list));
+    }
+
+    // Places the elements of the given array into sorted order
+    // using the merge sort algorithm.
+    // post: array is in sorted (nondecreasing) order
+    public static void mergeSort(int[] array) {
+        if (array.length > 1) {
+            // split array into two halves
+            int mid = array.length / 2;
+            int[] left = new int[mid];
+            
+            for (int i = 0; i < left.length; i++) {
+                left[i] = array[i];
             }
-            //
-            else if (i < A.length) 
-            {
-		array[k] = A[i++];
-            } 
-            else  
-            { //era else if (j < B.length)
-		array[k] = B[j++];
+            
+            int[] right = new int[array.length - mid];
+            for (int i = 0; i < right.length; i++) {
+                right[i] = array[i + mid];
             }
+            // recursively sort the two halves
+            mergeSort(left);
+            mergeSort(right);
+            
+            // merge the sorted halves into a sorted whole
+            merge(array, left, right);
         }
-        System.out.print(" | ");
-        for(int ar : array)
-        {
-            System.out.print("This: " + ar + " -- ");
-        }
-}
+    }
     
-    public static void main(String[] args){
-        int[] item = {1, 3, 2, 6, 9};
-        merge(item, 0, item.length - 1);
+    public static void merge(int[] result,int[] left, int[] right) {
+        int i1 = 0;   
+        int i2 = 0;   
+        
+        for (int i = 0; i < result.length; i++) {
+            if (i1 < left.length && i2 < right.length) {
+                if(left[i1] < right[i2]){
+                    result[i] = left[i1]; 
+                    i1++;
+                }else{
+                    result[i] = right[i2];
+                    i2++;
+                }
+            }else if(i1 < left.length){
+                result[i] = left[i1]; 
+                i1++;
+            }else{
+                result[i] = right[i2]; 
+                i2++;
+            }
+        }
     }
 }
