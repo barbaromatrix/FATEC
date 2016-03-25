@@ -10,19 +10,44 @@ package index;
  * @author barbaromatrix
  */
 public class Media {
-    private int quantidadeElementos;
-    
-    public Media(int quantidadeElementos){
-        this.quantidadeElementos = quantidadeElementos;
-    }
     
     public Media(){}
     
-    public double media(){
+    /**
+     * 
+     * @param elementos
+     * @return Média simples de um conjunto de elementos
+     */
+    public double media(double[] elementos){
+        int soma = 0;
+        soma = (int)soma(elementos, elementos.length - 1);
+        return soma/elementos.length;
+    }
+    
+    /**
+     * 
+     * @param elementos
+     * @param frequencia
+     * @return média de x intervalos de classe de um conjunto de dados
+     */
+    public double media(double[] elementos, double[] frequencia){
         return 0;
     }
     
-    public double arredondaNumero(double numero){
-        return 0;
+    public void arredondaNumero(String numero){
+        
+    }
+    
+    /**
+     * 
+     * @param f
+     * @param controle
+     * @return soma recursiva do vetor f
+     */
+    public double soma(double[] f, int controle)
+    {
+        if(controle == 0) return f[0];
+        
+        return f[controle] + soma(f, controle - 1);
     }
 }
