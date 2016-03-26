@@ -5,8 +5,6 @@
  */
 package index;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author barbaromatrix
