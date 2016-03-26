@@ -18,7 +18,8 @@ public class Media {
      * @param elementos
      * @return Média simples de um conjunto de elementos
      */
-    public double media(double[] elementos) {
+    public double media(double[] elementos)
+    {
         double soma = soma(elementos, elementos.length - 1);
         return soma / elementos.length;
     }
@@ -26,10 +27,16 @@ public class Media {
     /**
      * 
      * @param elementos
+     * @param frequencia
      * @return Média simples de um conjunto de elementos com x frequência
      */
-    public double media(double[] elementos, double[] frequencia){
-        double soma = soma(elementos, elementos.length - 1);
+    public double media(double[] elementos, double[] frequencia)
+    {
+        double soma = 0;
+        for (int i = 0; i < elementos.length; i++) {
+            soma += (elementos[i] * frequencia[i]);
+        }
+        
         return soma/soma(frequencia, frequencia.length - 1);
     }
     
@@ -39,16 +46,22 @@ public class Media {
      * @param frequencia
      * @return média de x intervalos de classe de um conjunto de dados
      */
-    public double media(double[][] elementos, double[] frequencia){
-        double soma = 0;
+    public double media(double[][] elementos, double[] frequencia)
+    {
+        double soma = 0, somaParcial = 0;
         for (int i = 0; i < elementos.length; i++) {
-            soma += soma(elementos[i], elementos.length - 1);
+            somaParcial = (soma(elementos[i], elementos[i].length - 1)/2) * frequencia[i];
+            soma += somaParcial;
         }
         
         double media = soma / soma(frequencia, frequencia.length - 1);
         
         return media;
     }
+    
+    /*
+    fórmula da media = limite inferior + ((((0,5 * sumFrequencia) - frequenciaAcumuladaAcima) * h)/ frequenciaDaClasse)
+    */
     
     /**
      * 
