@@ -60,7 +60,7 @@ public class Media {
     }
     
     /*
-    fórmula da media = limite inferior + ((((0,5 * sumFrequencia) - frequenciaAcumuladaAcima) * h)/ frequenciaDaClasse)
+    fórmula da mediana = limite inferior + ((((0,5 * sumFrequencia) - frequenciaAcumuladaAcima) * h)/ frequenciaDaClasse)
     */
     
     /**
