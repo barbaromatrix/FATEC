@@ -110,7 +110,7 @@ public class Media {
      * 
      * @param f
      * @param controle
-     * @return soma recursiva do vetor f que soma todo o vetor
+     * @return soma recursiva do vetor f que soma todo o vetor 
      */
     public double soma(double[] f, int controle)
     {
