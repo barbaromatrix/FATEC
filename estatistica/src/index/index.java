@@ -17,19 +17,19 @@ public class index {
         double frequencia[] = {1, 2,3};*/
         Media m = new Media();
         
-        String cenoura[] = {"[98;102[", "[98;102["};
-        double[][] loco = new double[cenoura.length][2];
+        String elementos[] = {"[98;102[", "[98;102["};
+        double[][] elementosSeparados = new double[elementos.length][2];
         String[] split;
         
-        for (int i = 0; i < cenoura.length; i++)
+        for (int i = 0; i < elementos.length; i++)
         {
-            cenoura[i] = cenoura[i].replace("[", "");
-            split = cenoura[i].split(";");
-            loco[i][0] = Double.valueOf(split[0]);
-            loco[i][1] = Double.valueOf(split[1]);
+            elementos[i] = elementos[i].replace("[", "");
+            split = elementos[i].split(";");
+            elementosSeparados[i][0] = Double.valueOf(split[0]);
+            elementosSeparados[i][1] = Double.valueOf(split[1]);
         }
         double[] frequencia = {10, 10};
-        System.out.println(m.media(loco, frequencia));
+        System.out.println(m.media(elementosSeparados, frequencia));
         
   }
 }
