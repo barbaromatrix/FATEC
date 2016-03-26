@@ -13,23 +13,24 @@ import java.util.Arrays;
  */
 public class index {
     public static void main(String[] args) {
-        double cenoura[] = {1,2,3,4,5};
+        //double cenoura[] = {1};
+        
         Media m = new Media();
         
-        System.out.println(m.media(cenoura));
-        /*
+        
         String cenoura[] = {"[160;164[", "[164;168["};
-        String[][] loco = new String[cenoura.length][2];
+        double[][] loco = new double[cenoura.length][2];
         String[] split;
         
         for (int i = 0; i < cenoura.length; i++)
         {
             cenoura[i] = cenoura[i].replace("[", "");
             split = cenoura[i].split(";");
-            loco[i][0] = split[0];
-            loco[i][1] = split[1];
+            loco[i][0] = Double.valueOf(split[0]);
+            loco[i][1] = Double.valueOf(split[1]);
         }
-        */
-        //System.out.println(m.soma(cenoura, cenoura.length - 1));
+        double[] frequencia = {1, 5};
+        System.out.println(m.media(loco, frequencia));
+        
   }
 }

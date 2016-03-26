@@ -29,11 +29,13 @@ public class Media {
      * @param frequencia
      * @return média de x intervalos de classe de um conjunto de dados
      */
-    public double media(double[] elementos, double[] frequencia){
-        return 0;
+    public double media(double[][] elementos, double[] frequencia){
+        double soma = 0;
+        for (int i = 0; i < elementos.length; i++) {
+            soma += soma(elementos[i], elementos.length - 1);
+        }
+        return soma;
     }
-    
-    // Formato de classe: [160;164[
     
     /**
      * 
