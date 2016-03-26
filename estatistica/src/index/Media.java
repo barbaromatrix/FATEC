@@ -97,13 +97,25 @@ public class Media {
      * @return mediana de um intervalo de classe de x elementos
      */
     public double mediana(double[][] elementos, double[] frequencia)
-    {  
-    /*
-    fórmula da mediana = limite inferior + ((((0,5 * sumFrequencia) - frequenciaAcumuladaAcima) * h)/ frequenciaDaClasse)
-    */
-        
-        double media = media(elementos, frequencia);
-        return media;
+    { 
+       int i = 0;
+       boolean flag = false;
+       while(i < frequencia.length && flag == false)
+       {
+           if ((soma(frequencia, frequencia.length - 1) / 2) < (soma(frequencia, i, 0)))
+           {
+               flag = true;
+               System.out.println("Sim");
+           }else
+           {
+               System.out.println("Não");
+               i++;
+           }
+       }
+       double mediana = elementos[i][0];
+       mediana += ((((0.5 * soma(frequencia, frequencia.length - 1)) - soma(frequencia, (i - 1), 0)) * (elementos[i][1] - elementos[i][0])) / frequencia[i]);
+       
+        return mediana;
     }
     
     /**
