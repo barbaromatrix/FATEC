@@ -28,7 +28,7 @@ public class index {
         }
         double[] frequencia = {4, 9, 11, 8, 5, 3};
         
-        System.out.println(m.quartil(elementosSeparados, frequencia, 3));
+        System.out.println(m.percentil(elementosSeparados, frequencia, 0.15));
         
   }
 }

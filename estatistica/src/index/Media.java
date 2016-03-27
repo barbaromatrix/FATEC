@@ -128,28 +128,83 @@ public class Media {
      */
     public double quartil(double[][] elementos, double[] frequencia, int valorQuartil)
     {
-        int i;
+        double pct;
         switch(valorQuartil)
         {
             case 1:
-                i = findClass(frequencia, 0.25);
+                pct = 0.25;
                 break;
             case 2:
-                i = findClass(frequencia, 0.5);
+                pct = 0.5;
                 break;
             case 3:
-                i = findClass(frequencia, 0.75);
+                pct =  0.75;
                 break;
             default:
-                i = findClass(frequencia, 1);
+                pct = 1;
                 break;
         }
         
+        int i = findClass(frequencia, pct);
         double quartil = elementos[i][0];
-        quartil += ((((0.5 * soma(frequencia, frequencia.length - 1)) - soma(frequencia, (i - 1), 0)) * (elementos[i][1] - elementos[i][0])) / frequencia[i]);
+        quartil += ((((pct * soma(frequencia, frequencia.length - 1)) - soma(frequencia, (i - 1), 0)) * (elementos[i][1] - elementos[i][0])) / frequencia[i]);
        
         return quartil;
     }
+    
+    public double decil(double[][] elementos, double[] frequencia, int valorDecil)
+    {
+        double pct;
+        switch(valorDecil)
+        {
+            case 1:
+                pct = 0.1;
+                break;
+            case 2:
+                pct = 0.2;
+                break;
+            case 3:
+                pct =  0.3;
+                break;
+            case 4:
+                pct =  0.4;
+                break;
+            case 5:
+                pct =  0.5;
+                break;
+            case 6:
+                pct =  0.6;
+                break;
+            case 7:
+                pct =  0.7;
+                break;
+            case 8:
+                pct =  0.8;
+                break;
+            case 9:
+                pct =  0.9;
+                break;
+            default:
+                pct = 1;
+                break;
+        }
+        
+        int i = findClass(frequencia, pct);
+        double decil = elementos[i][0];
+        decil += ((((pct * soma(frequencia, frequencia.length - 1)) - soma(frequencia, (i - 1), 0)) * (elementos[i][1] - elementos[i][0])) / frequencia[i]);
+       
+        return decil;
+    }
+    
+    public double percentil(double[][] elementos, double[] frequencia, double valorPercentil)
+    {
+        int i = findClass(frequencia, valorPercentil);
+        double percentil = elementos[i][0];
+        percentil += ((((valorPercentil * soma(frequencia, frequencia.length - 1)) - soma(frequencia, (i - 1), 0)) * (elementos[i][1] - elementos[i][0])) / frequencia[i]);
+       
+        return percentil;
+    }
+    
     /**
      * 
      * @param f
