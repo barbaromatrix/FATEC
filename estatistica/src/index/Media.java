@@ -98,26 +98,58 @@ public class Media {
      */
     public double mediana(double[][] elementos, double[] frequencia)
     { 
-       int i = 0;
-       boolean flag = false;
-       while(i < frequencia.length && flag == false)
-       {
-           if ((soma(frequencia, frequencia.length - 1) / 2) < (soma(frequencia, i, 0)))
-           {
-               flag = true;
-               System.out.println("Sim");
-           }else
-           {
-               System.out.println("Não");
-               i++;
-           }
-       }
+       int i = findClass(frequencia, 0.5);
        double mediana = elementos[i][0];
        mediana += ((((0.5 * soma(frequencia, frequencia.length - 1)) - soma(frequencia, (i - 1), 0)) * (elementos[i][1] - elementos[i][0])) / frequencia[i]);
        
         return mediana;
     }
     
+    /**
+     * 
+     * @param elementos
+     * @param frequencia
+     * @return 
+     */
+    public double moda(double[][] elementos, double[] frequencia)
+    {
+        int i = findClass(frequencia, 0.5);
+        double moda = elementos[i][0];
+        moda += ((frequencia[i] - frequencia[i - 1]) / ((frequencia[i] - frequencia[i - 1]) + (frequencia[i] - frequencia[i + 1]))) * (elementos[i][1] - elementos[i][0]);
+        return moda;
+    }
+    
+    /**
+     * 
+     * @param elementos
+     * @param frequencia
+     * @param valorQuartil
+     * @return 
+     */
+    public double quartil(double[][] elementos, double[] frequencia, int valorQuartil)
+    {
+        int i;
+        switch(valorQuartil)
+        {
+            case 1:
+                i = findClass(frequencia, 0.25);
+                break;
+            case 2:
+                i = findClass(frequencia, 0.5);
+                break;
+            case 3:
+                i = findClass(frequencia, 0.75);
+                break;
+            default:
+                i = findClass(frequencia, 1);
+                break;
+        }
+        
+        double quartil = elementos[i][0];
+        quartil += ((((0.5 * soma(frequencia, frequencia.length - 1)) - soma(frequencia, (i - 1), 0)) * (elementos[i][1] - elementos[i][0])) / frequencia[i]);
+       
+        return quartil;
+    }
     /**
      * 
      * @param f
@@ -130,6 +162,28 @@ public class Media {
         
         return f[controle] + soma(f, controle - 1);
     }
+    
+    /**
+     * 
+     * @param frequencia
+     * @param type
+     * @return 
+     */
+    public int findClass(double frequencia[], double type)
+    {
+        int i = 0;
+        boolean flag = false;
+        while (i < frequencia.length && flag == false) {
+            if ((soma(frequencia, frequencia.length - 1) * type) < (soma(frequencia, i, 0))) {
+                flag = true;
+            } else {
+                i++;
+            }
+        }
+        
+        return i;
+    }
+    
     /**
      * 
      * @param f

@@ -27,8 +27,8 @@ public class index {
             elementosSeparados[i][1] = Double.valueOf(split[1]);
         }
         double[] frequencia = {4, 9, 11, 8, 5, 3};
-        //System.out.println(m.soma(frequencia, 1, 0));
-        System.out.println(m.mediana(elementosSeparados, frequencia));
+        
+        System.out.println(m.quartil(elementosSeparados, frequencia, 3));
         
   }
 }
