@@ -45,7 +45,7 @@ public class Piechart {
      * @param title
      * @return 
      */
-    private JFreeChart createChart(PieDataset dataset, String title) {
+    JFreeChart createChart(PieDataset dataset, String title) {
         // título // dados  // include legenda
         JFreeChart chart = ChartFactory.createPieChart3D(title, dataset, true, true, true);
         

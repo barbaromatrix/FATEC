@@ -475,14 +475,14 @@ public class Index extends javax.swing.JFrame {
             informacoes += "DP - " + df.format( f.desvioPadrao( f.retornaArrayDoubleArrumado(elementos), frequencia ) ) + "\n";
             informacoes += "CV - " + df.format( f.coeficienteVariacao( f.desvioPadrao( f.retornaArrayDoubleArrumado(elementos), frequencia), f.media( f.retornaArrayDoubleArrumado( elementos ), frequencia ) ) ) + "\n";
 
-
             txpInformacoesGeradas.setText(informacoes);
 
             g = new Grafico();
+            piechart = new Piechart();
 
-            PieDataset dataset = createDataset(tabela, frequencia, soma(frequencia, frequencia.length - 1));
+            PieDataset dataset = piechart.createDataset(tabela, frequencia, f.soma(frequencia, frequencia.length - 1));
 
-            JFreeChart chart = createChart(dataset, "Gráfico de setores");
+            JFreeChart chart = piechart.createChart(dataset, "Gráfico de setores");
             
             ChartPanel chartPanel = new ChartPanel(chart);
 
@@ -531,17 +531,18 @@ public class Index extends javax.swing.JFrame {
                 tabela[i][1] = String.valueOf( frequencia[i] );
             }
 
-            String informacao = "Média - " + df.format(media(retornaVetorDoubleArrumado(elementos), frequencia)) + "\n";
-            informacao += "Moda - " + df.format(moda(retornaVetorDoubleArrumado(elementos), frequencia)) + "\n";
-            informacao += "Mediana - " + df.format(mediana(retornaVetorDoubleArrumado(elementos))) + "\n";
+            String informacao = "Média - " + df.format( f.media( f.retornaVetorDoubleArrumado(elementos), frequencia ) ) + "\n";
+            informacao += "Moda - " + df.format( f.moda( f.retornaVetorDoubleArrumado(elementos), frequencia ) ) + "\n";
+            informacao += "Mediana - " + df.format( f.mediana( f.retornaVetorDoubleArrumado( elementos ) ) ) + "\n";
 
             txpInformacoesGeradasSimple.setText(informacao);
 
             g = new Grafico();
+            piechart = new Piechart();
 
-            PieDataset dataset = createDataset(tabela, frequencia, soma(frequencia, frequencia.length - 1));
+            PieDataset dataset = piechart.createDataset(tabela, frequencia, f.soma( frequencia, frequencia.length - 1 ) );
 
-            JFreeChart chart = createChart(dataset, "Gráfico de setores");
+            JFreeChart chart = piechart.createChart(dataset, "Gráfico de setores");
 
             ChartPanel chartPanel = new ChartPanel(chart);
 
