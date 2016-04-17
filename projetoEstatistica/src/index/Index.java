@@ -9,10 +9,8 @@ import java.text.DecimalFormat;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 /**
  *
@@ -22,11 +20,15 @@ public class Index extends javax.swing.JFrame {
     
     private static final long serialVersionUID = 1L;
     Grafico g;
+    Piechart piechart;
+    Funcoes f;
     /**
      * Creates new form Index
      */
     public Index() {
         initComponents();  
+        
+        f = new Funcoes();
         
         String[] elementos = {"[150;154[","[154;158[","[158;162[","[162;166[","[166;170[","[170;174["};
         String[] frequencia = {"4", "9", "11", "8", "5", "3"};
@@ -449,29 +451,29 @@ public class Index extends javax.swing.JFrame {
 
             }       
 
-            String informacoes = "Média - " + df.format(media( retornaArrayDoubleArrumado( elementos ), frequencia ) ) + "\n";
-            informacoes += "Moda - " + df.format( moda( retornaArrayDoubleArrumado( elementos ), frequencia ) ) + "\n";
-            informacoes += "Mediana - " + df.format(mediana(frequencia)) + "\n";
+            String informacoes = "Média - " + df.format( f.media( f.retornaArrayDoubleArrumado( elementos ), frequencia ) ) + "\n";
+            informacoes += "Moda - " + df.format( f.moda( f.retornaArrayDoubleArrumado( elementos ), frequencia ) ) + "\n";
+            informacoes += "Mediana - " + df.format( f.mediana( frequencia ) ) + "\n";
 
-            informacoes += "Quartil 1 - " + df.format( quartil( retornaArrayDoubleArrumado(elementos), frequencia, 1 ) ) + "\n";
-            informacoes += "Quartil 2 - " + df.format( quartil( retornaArrayDoubleArrumado(elementos), frequencia, 2 ) ) + "\n";
-            informacoes += "Quartil 3 - " + df.format( quartil( retornaArrayDoubleArrumado(elementos), frequencia, 3 ) ) + "\n";
-            informacoes += "Quartil 4 - " + df.format( quartil( retornaArrayDoubleArrumado(elementos), frequencia, 4 ) ) + "\n";
+            informacoes += "Quartil 1 - " + df.format( f.quartil( f.retornaArrayDoubleArrumado(elementos), frequencia, 1 ) ) + "\n";
+            informacoes += "Quartil 2 - " + df.format( f.quartil( f.retornaArrayDoubleArrumado(elementos), frequencia, 2 ) ) + "\n";
+            informacoes += "Quartil 3 - " + df.format( f.quartil( f.retornaArrayDoubleArrumado(elementos), frequencia, 3 ) ) + "\n";
+            informacoes += "Quartil 4 - " + df.format( f.quartil( f.retornaArrayDoubleArrumado(elementos), frequencia, 4 ) ) + "\n";
             
-            informacoes += "Decil 1 - " + df.format( decil( retornaArrayDoubleArrumado(elementos), frequencia, 1 ) ) + "\n";
-            informacoes += "Decil 2 - " + df.format( decil( retornaArrayDoubleArrumado(elementos), frequencia, 2 ) ) + "\n";
-            informacoes += "Decil 3 - " + df.format( decil( retornaArrayDoubleArrumado(elementos), frequencia, 3 ) ) + "\n";
-            informacoes += "Decil 4 - " + df.format( decil( retornaArrayDoubleArrumado(elementos), frequencia, 4 ) ) + "\n";
-            informacoes += "Decil 5 - " + df.format( decil( retornaArrayDoubleArrumado(elementos), frequencia, 5 ) ) + "\n";
-            informacoes += "Decil 6 - " + df.format( decil( retornaArrayDoubleArrumado(elementos), frequencia, 6 ) ) + "\n";
-            informacoes += "Decil 7 - " + df.format( decil( retornaArrayDoubleArrumado(elementos), frequencia, 7 ) ) + "\n";
-            informacoes += "Decil 8 - " + df.format( decil( retornaArrayDoubleArrumado(elementos), frequencia, 8 ) ) + "\n";
-            informacoes += "Decil 9 - " + df.format( decil( retornaArrayDoubleArrumado(elementos), frequencia, 9 ) ) + "\n";
-            informacoes += "Decil 10 - " + df.format( decil(retornaArrayDoubleArrumado(elementos), frequencia, 10 ) ) + "\n";
+            informacoes += "Decil 1 - " + df.format( f.decil( f.retornaArrayDoubleArrumado(elementos), frequencia, 1 ) ) + "\n";
+            informacoes += "Decil 2 - " + df.format( f.decil( f.retornaArrayDoubleArrumado(elementos), frequencia, 2 ) ) + "\n";
+            informacoes += "Decil 3 - " + df.format( f.decil( f.retornaArrayDoubleArrumado(elementos), frequencia, 3 ) ) + "\n";
+            informacoes += "Decil 4 - " + df.format( f.decil( f.retornaArrayDoubleArrumado(elementos), frequencia, 4 ) ) + "\n";
+            informacoes += "Decil 5 - " + df.format( f.decil( f.retornaArrayDoubleArrumado(elementos), frequencia, 5 ) ) + "\n";
+            informacoes += "Decil 6 - " + df.format( f.decil( f.retornaArrayDoubleArrumado(elementos), frequencia, 6 ) ) + "\n";
+            informacoes += "Decil 7 - " + df.format( f.decil( f.retornaArrayDoubleArrumado(elementos), frequencia, 7 ) ) + "\n";
+            informacoes += "Decil 8 - " + df.format( f.decil( f.retornaArrayDoubleArrumado(elementos), frequencia, 8 ) ) + "\n";
+            informacoes += "Decil 9 - " + df.format( f.decil( f.retornaArrayDoubleArrumado(elementos), frequencia, 9 ) ) + "\n";
+            informacoes += "Decil 10 - " + df.format( f.decil( f.retornaArrayDoubleArrumado(elementos), frequencia, 10 ) ) + "\n";
 
-            informacoes += "DM - " + df.format(desvioMedio(retornaArrayDoubleArrumado(elementos), frequencia)) + "\n";
-            informacoes += "DP - " + df.format(desvioPadrao(retornaArrayDoubleArrumado(elementos), frequencia)) + "\n";
-            informacoes += "CV - " + df.format(coeficienteVariacao(desvioPadrao(retornaArrayDoubleArrumado(elementos), frequencia), media(retornaArrayDoubleArrumado(elementos), frequencia))) + "\n";
+            informacoes += "DM - " + df.format( f.desvioMedio( f.retornaArrayDoubleArrumado(elementos), frequencia ) ) + "\n";
+            informacoes += "DP - " + df.format( f.desvioPadrao( f.retornaArrayDoubleArrumado(elementos), frequencia ) ) + "\n";
+            informacoes += "CV - " + df.format( f.coeficienteVariacao( f.desvioPadrao( f.retornaArrayDoubleArrumado(elementos), frequencia), f.media( f.retornaArrayDoubleArrumado( elementos ), frequencia ) ) ) + "\n";
 
 
             txpInformacoesGeradas.setText(informacoes);
@@ -637,363 +639,4 @@ public class Index extends javax.swing.JFrame {
     private javax.swing.JTextField txtValorSimple;
     // End of variables declaration//GEN-END:variables
     
-    /**
-     * 
-     * @param elementos
-     * @return Média simples de um conjunto de elementos
-     */
-    public double media(double[] elementos)
-    {
-        
-        double soma = soma(elementos, elementos.length - 1, 0);
-        
-        return soma / elementos.length;
-    }
-    
-    /**
-     * 
-     * @param elementos
-     * @param frequencia
-     * @return Média simples de um conjunto de elementos com x frequência
-     */
-    public double media(double[] elementos, double[] frequencia)
-    {
-        double soma = 0;
-        for (int i = 0; i < elementos.length; i++) {
-            soma += (elementos[i] * frequencia[i]);
-        }
-        return soma/soma(frequencia, frequencia.length - 1, 0);
-    }
-    
-    /**
-     * 
-     * @param elementos
-     * @param frequencia
-     * @return média de x intervalos de classe de um conjunto de dados
-     */
-    public double media(double[][] elementos, double[] frequencia)
-    {
-        double soma = 0, somaParcial = 0;
-        
-        for (int i = 0; i < elementos.length; i++) {
-            somaParcial = (soma(elementos[i], elementos[i].length - 1, 0)/2) * frequencia[i];
-            soma += somaParcial;
-        }
-        
-        double media = soma / soma(frequencia, frequencia.length - 1, 0);
-        
-        return media;
-    }    
-    
-    /**
-     * 
-     * @param elementos
-     * @return A mediana simples de elementos sem intervalo de classe
-     */
-    public double mediana(double[] elementos)
-    {
-        return (elementos.length % 2 == 0) ? ((elementos[(elementos.length / 2) - 1] + elementos[(elementos.length/2)])/2) : elementos[elementos.length / 2];
-    }
-    
-    /**
-     * 
-     * @param elementos
-     * @param frequencia
-     * @return a moda de um conjunto de elementos
-     */
-    public double moda(double[] elementos, double[] frequencia)
-    {
-        double max = 0;
-        int place = 0;
-        for (int i = 0; i < frequencia.length; i++) 
-        {
-            if(frequencia[i] > max)
-            {
-                max = frequencia[i];
-                place = i;
-            }
-        }
-        return elementos[place];
-    }
-    
-    /**
-     * 
-     * @param elementos
-     * @param frequencia
-     * @return 
-     */
-    public double moda(double[][] elementos, double[] frequencia)
-    {
-        int i = findClass(frequencia, 0.5);
-        double moda = elementos[i][0];
-        System.out.println(frequencia.length);
-        if( i > 1 )
-        {
-            moda += ((frequencia[i] - frequencia[i - 1]) / ((frequencia[i] - frequencia[i - 1]) + (frequencia[i] - frequencia[i + 1]))) * (elementos[i][1] - elementos[i][0]);
-        }else{
-            moda += (frequencia[i] / ((frequencia[i]) + (frequencia[i]))) * (elementos[i][1] - elementos[i][0]);
-        }
-        
-        return moda;
-    }
-    
-    /**
-     * 
-     * @param elementos
-     * @param frequencia
-     * @param valorQuartil
-     * @return 
-     */
-    public double quartil(double[][] elementos, double[] frequencia, int valorQuartil)
-    {
-        double pct;
-        switch(valorQuartil)
-        {
-            case 1:
-                pct = 0.25;
-                break;
-            case 2:
-                pct = 0.5;
-                break;
-            case 3:
-                pct =  0.75;
-                break;
-            default:
-                pct = 1;
-                break;
-        }
-        
-        int i = findClass(frequencia, pct);
-        double quartil = elementos[i][0];
-        
-        if ( i > 0 ){
-            quartil += ((((pct * soma(frequencia, frequencia.length - 1)) - soma(frequencia, (i - 1), 0)) * (elementos[i][1] - elementos[i][0])) / frequencia[i]);
-        }else{
-            quartil += ((((pct * soma(frequencia, frequencia.length - 1)) - 0) * (elementos[i][1] - elementos[i][0])) / frequencia[i]);
-        }
-       
-        return quartil;
-    }
-    
-    public double decil(double[][] elementos, double[] frequencia, int valorDecil)
-    {
-        double pct;
-        switch(valorDecil)
-        {
-            case 1:
-                pct = 0.1;
-                break;
-            case 2:
-                pct = 0.2;
-                break;
-            case 3:
-                pct =  0.3;
-                break;
-            case 4:
-                pct =  0.4;
-                break;
-            case 5:
-                pct =  0.5;
-                break;
-            case 6:
-                pct =  0.6;
-                break;
-            case 7:
-                pct =  0.7;
-                break;
-            case 8:
-                pct =  0.8;
-                break;
-            case 9:
-                pct =  0.9;
-                break;
-            default:
-                pct = 1;
-                break;
-        }
-        
-        int i = findClass(frequencia, pct);
-        
-        double decil = elementos[i][0];
-        
-        if ( i > 0 )
-        {
-            decil += ((((pct * soma(frequencia, frequencia.length - 1)) - soma(frequencia, (i - 1), 0)) * (elementos[i][1] - elementos[i][0])) / frequencia[i]);
-        }else{
-            decil += ((((pct * soma(frequencia, frequencia.length - 1)) - 0) * (elementos[i][1] - elementos[i][0])) / frequencia[i]);
-        }
-       
-        return decil;
-    }
-    
-    /**
-     * 
-     * @param elementos
-     * @param frequencia
-     * @param valorPercentil
-     * @return 
-     */
-    public double percentil(double[][] elementos, double[] frequencia, double valorPercentil)
-    {
-        int i = findClass(frequencia, valorPercentil);
-        double percentil = elementos[i][0];
-        if( i > 0 )
-        {
-            percentil += ((((valorPercentil * soma(frequencia, frequencia.length - 1)) - soma(frequencia, (i - 1), 0)) * (elementos[i][1] - elementos[i][0])) / frequencia[i]);
-        }else{
-            percentil += ((((valorPercentil * soma(frequencia, frequencia.length - 1)) - 0 ) * (elementos[i][1] - elementos[i][0])) / frequencia[i]);
-        }
-        return percentil;
-    }
-    
-    public double desvioMedio(double[][] elementos, double[] frequencia)
-    {
-        // DV = Somatória de ((Xi - x) * frequencia_da_classe) / soma_de_frequencia
-        double dm = 0;
-        double aux;
-        
-        for(int i = 0; i < frequencia.length; i++)
-        {
-            //dm += ((soma(elementos[i], elementos[i].length - 1) / 2) - media(elementos[i], frequencia)) * frequencia[i];
-            aux = ((soma(elementos[i], elementos[i].length - 1) / 2) - media(elementos, frequencia));
-            
-            if(aux < 0)
-            {
-                dm += (aux * ((-1) * frequencia[i]));
-            }else{
-                dm += (aux * frequencia[i]);
-            }
-        }
-        
-        dm /= soma(frequencia, frequencia.length - 1);
-        return dm;
-    }
-    
-    public double desvioPadrao(double[][] elementos, double[] frequencia)
-    {
-        double dp = 0;
-        for(int i = 0; i < frequencia.length; i++)
-        {
-            dp += Math.pow( ( (soma(elementos[i], elementos[i].length - 1) / 2 ) - media(elementos, frequencia)),2) * frequencia[i];
-        }
-        
-        dp /= soma(frequencia, frequencia.length - 1);
-        dp = Math.sqrt(dp);
-        return dp;
-    }
-    
-    public double coeficienteVariacao(double desvioPadrao, double media)
-    {
-        return desvioPadrao / media;
-    }
-    
-    /**
-     * 
-     * @param f
-     * @param controle
-     * @return soma recursiva do vetor f que soma todo o vetor 
-     */
-    public double soma(double[] f, int controle)
-    {
-        if(controle == 0) return f[0];
-        
-        return f[controle] + soma(f, controle - 1);
-    }
-    
-    /**
-     * 
-     * @param frequencia
-     * @param type
-     * @return 
-     */
-    public int findClass(double frequencia[], double type)
-    {
-        int i = 0;
-        boolean flag = false;
-        
-        while ( i < frequencia.length && flag == false ) {
-            if ( ( soma( frequencia, frequencia.length - 1 ) * type ) <= ( soma( frequencia, i, 0 ) ) ) {
-                flag = true;
-                
-            } else {
-                i++;
-            }
-        }
-        
-        System.out.println(i);
-        return i;
-    }
-    
-    /**
-     * 
-     * @param f
-     * @param controle => Elemento limite de comparação => escape da recursividade
-     * @param passagem => Elemento x do vetor que é incrementado
-     * @return Uma soma qualquer com limite
-     */
-    public double soma(double[] f, int controle, int passagem)
-    {
-        
-        if (passagem == controle) return f[passagem];
-        
-        return soma(f, controle, passagem + 1) + f[passagem];
-    }
-    
-    public double[][] retornaArrayDoubleArrumado(String[] elementos)
-    {
-        String[] split;
-        double[][] elementosSeparados = new double[elementos.length][2];
-        for (int i = 0; i < elementos.length; i++)
-        {
-            elementos[i] = elementos[i].replace("[", "");
-            split = elementos[i].split(";");
-            elementosSeparados[i][0] = Double.valueOf(split[0]);
-            elementosSeparados[i][1] = Double.valueOf(split[1]);
-        }
-        
-        return elementosSeparados;
-    }
-    
-    /**
-     *
-     * @param elemento
-     * @return
-     */
-    public double[] retornaVetorDoubleArrumado(String[] elemento)
-    {
-        double[] elementos = new double[elemento.length];
-        
-        for(int i = 0; i < elementos.length; i++)
-        {
-            elementos[i] = Double.parseDouble(elemento[i]);
-        }
-        
-        return elementos;
-    }
-
-    /**
-     * 
-     * @return Cria um conjunto de dados de amostra 
-     */
-    private PieDataset createDataset(String[][] conteudo, double[] frequencia, double frequenciaTotal) {
-	DefaultPieDataset result = new DefaultPieDataset();
-        Double valor = 0d;
-        for (Double pepeka : frequencia) {
-            
-        }
-        for ( int i = 0; i < frequencia.length; i++ ) {
-            valor = ( frequencia[i] / frequenciaTotal ) * 100;
-            
-            result.setValue(conteudo[i][0], valor );
-        }
-        
-	return result;
-    }
-    
-    private JFreeChart createChart(PieDataset dataset, String title) {
-        // título // dados  // include legenda
-        JFreeChart chart = ChartFactory.createPieChart3D(title, dataset, true, true, true);
-        
-        return chart;
-    }
 }
