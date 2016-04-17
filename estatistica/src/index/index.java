@@ -13,9 +13,12 @@ public class index {
     public static void main(String[] args) {
         Media m = new Media();
         /*double cenoura[] = {0, 1, 2, 3, 4, 5, 6, 7};
-        double frequencia[] = {45, 52, 48, 55, 30, 10, 8, 2};*/        
+        double frequencia[] = {45, 52, 48, 55, 30, 10, 8, 2};
         
-        String elementos[] = {"[150;154[", "[154;158[", "[158;162[", "[162;166[", "[166;170[", "[170;174["};
+        System.out.println(m.media(frequencia, frequencia));*/
+        
+        String[] elementos = {"[2;8[", "[8;14[", "[14;20[", "[20;26[", "[26;32["};
+        
         double[][] elementosSeparados = new double[elementos.length][2];
         String[] split;
         
@@ -26,9 +29,11 @@ public class index {
             elementosSeparados[i][0] = Double.valueOf(split[0]);
             elementosSeparados[i][1] = Double.valueOf(split[1]);
         }
-        double[] frequencia = {4, 9, 11, 8, 5, 3};
+        double[] frequencia = {10,9,21,7,3};
         
-        System.out.println(m.percentil(elementosSeparados, frequencia, 0.15));
+        PieChart demo = new PieChart("Projeto aplicado", "Estatística");
+        demo.pack();
+        demo.setVisible(true);
         
   }
 }

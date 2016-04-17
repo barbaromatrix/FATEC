@@ -5,11 +5,13 @@
  */
 package index;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author barbaromatrix
  */
-public class Media {
+public class Media extends JFrame{
     
     public Media(){}
     
@@ -203,6 +205,47 @@ public class Media {
         percentil += ((((valorPercentil * soma(frequencia, frequencia.length - 1)) - soma(frequencia, (i - 1), 0)) * (elementos[i][1] - elementos[i][0])) / frequencia[i]);
        
         return percentil;
+    }
+    
+    public double desvioMedio(double[][] elementos, double[] frequencia)
+    {
+        // DV = Somatória de ((Xi - x) * frequencia_da_classe) / soma_de_frequencia
+        double dm = 0;
+        double aux;
+        
+        for(int i = 0; i < frequencia.length; i++)
+        {
+            //dm += ((soma(elementos[i], elementos[i].length - 1) / 2) - media(elementos[i], frequencia)) * frequencia[i];
+            aux = ((soma(elementos[i], elementos[i].length - 1) / 2) - media(elementos, frequencia));
+            
+            if(aux < 0)
+            {
+                dm += (aux * ((-1) * frequencia[i]));
+            }else{
+                dm += (aux * frequencia[i]);
+            }
+        }
+        
+        dm /= soma(frequencia, frequencia.length - 1);
+        return dm;
+    }
+    
+    public double desvioPadrao(double[][] elementos, double[] frequencia)
+    {
+        double dp = 0;
+        for(int i = 0; i < frequencia.length; i++)
+        {
+            dp += Math.pow( ( (soma(elementos[i], elementos[i].length - 1) / 2 ) - media(elementos, frequencia)),2) * frequencia[i];
+        }
+        
+        dp /= soma(frequencia, frequencia.length - 1);
+        dp = Math.sqrt(dp);
+        return dp;
+    }
+    
+    public double coeficienteVariacao(double desvioPadrao, double media)
+    {
+        return desvioPadrao / media;
     }
     
     /**
