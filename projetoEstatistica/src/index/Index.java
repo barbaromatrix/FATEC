@@ -102,11 +102,12 @@ public class Index extends javax.swing.JFrame {
         setTitle("Projeto Estatística");
         setResizable(false);
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         jLabel1.setText("Seja bem-vindo ao projeto de Estatística");
         jLabel1.setName("lblApresentacao"); // NOI18N
 
         btnGrupoTipo.add(rdbComIntervalo);
+        rdbComIntervalo.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         rdbComIntervalo.setSelected(true);
         rdbComIntervalo.setText("Com intervalo");
         rdbComIntervalo.addActionListener(new java.awt.event.ActionListener() {
@@ -116,6 +117,7 @@ public class Index extends javax.swing.JFrame {
         });
 
         btnGrupoTipo.add(rdbSemIntervalo);
+        rdbSemIntervalo.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         rdbSemIntervalo.setText("Sem intervalo");
         rdbSemIntervalo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -125,16 +127,24 @@ public class Index extends javax.swing.JFrame {
 
         pnlPai.setLayout(new java.awt.CardLayout());
 
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         jLabel2.setText("Limite Inferior");
 
+        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         jLabel3.setText("Limite Superior");
 
+        txtLimiteInferior.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         txtLimiteInferior.setNextFocusableComponent(txtLimiteSuperior);
 
+        txtLimiteSuperior.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         txtLimiteSuperior.setNextFocusableComponent(txtFrequenciaComplex);
 
+        txtFrequenciaComplex.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
+
+        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         jLabel4.setText("Frequência");
 
+        btnAdicionar.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         btnAdicionar.setText("Adicionar");
         btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,8 +152,10 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         jLabel5.setText("Itens Adicionados");
 
+        jTable1.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -155,6 +167,7 @@ public class Index extends javax.swing.JFrame {
         jTable1.setEnabled(false);
         jScrollPane2.setViewportView(jTable1);
 
+        jButton1.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         jButton1.setText("Calcular valores");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,10 +176,13 @@ public class Index extends javax.swing.JFrame {
         });
 
         txpInformacoesGeradas.setEditable(false);
+        txpInformacoesGeradas.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
         jScrollPane1.setViewportView(txpInformacoesGeradas);
 
+        jLabel9.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         jLabel9.setText("Informações geradas");
 
+        btnLimpaComplex.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         btnLimpaComplex.setText("Limpar");
         btnLimpaComplex.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,7 +205,7 @@ public class Index extends javax.swing.JFrame {
                         .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(txtLimiteSuperior))
                     .addComponent(btnAdicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(pnlComplexLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlComplexLayout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 298, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -240,7 +256,7 @@ public class Index extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 54, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -248,14 +264,19 @@ public class Index extends javax.swing.JFrame {
 
         pnlSimple.setPreferredSize(new java.awt.Dimension(552, 321));
 
+        jLabel7.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         jLabel7.setText("Valor");
 
+        jLabel6.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         jLabel6.setText("Frequência");
 
+        txtValorSimple.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         txtValorSimple.setNextFocusableComponent(txtFrequenciaSimple);
 
+        txtFrequenciaSimple.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         txtFrequenciaSimple.setNextFocusableComponent(btnAdicionarSimple);
 
+        btnAdicionarSimple.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         btnAdicionarSimple.setText("Adicionar");
         btnAdicionarSimple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,6 +284,7 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        jTable2.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -273,8 +295,10 @@ public class Index extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable2);
 
+        jLabel8.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         jLabel8.setText("Itens Adicionados");
 
+        btnCalcularSimple.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         btnCalcularSimple.setText("Calcular valores");
         btnCalcularSimple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,11 +306,14 @@ public class Index extends javax.swing.JFrame {
             }
         });
 
+        jLabel10.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         jLabel10.setText("Informações Geradas");
 
         txpInformacoesGeradasSimple.setEditable(false);
+        txpInformacoesGeradasSimple.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         jScrollPane4.setViewportView(txpInformacoesGeradasSimple);
 
+        btnLimparSimple.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         btnLimparSimple.setText("Limpar");
         btnLimparSimple.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -353,7 +380,7 @@ public class Index extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 52, Short.MAX_VALUE)
                 .addGap(32, 32, 32))
         );
 
@@ -529,7 +556,9 @@ public class Index extends javax.swing.JFrame {
             double[] frequencia = new double[jTable2.getRowCount()];
             for(int i = 0; i < jTable2.getRowCount(); i++){
                 
+                elementos[i] = String.valueOf(((DefaultTableModel)jTable2.getModel()).getValueAt(i, 0));
                 frequencia[i] = Double.parseDouble(String.valueOf(((DefaultTableModel)jTable2.getModel()).getValueAt(i, 1)));
+                
                 tabela[i][0] = String.valueOf(((DefaultTableModel)jTable2.getModel()).getValueAt(i, 0));
                 tabela[i][1] = String.valueOf( frequencia[i] );
                 
