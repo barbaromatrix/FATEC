@@ -6,11 +6,14 @@
 package index;
 
 import java.text.DecimalFormat;
-import java.util.Arrays;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 /**
  *
@@ -217,7 +220,7 @@ public class Index extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(pnlComplexLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(pnlComplexLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1)
                             .addComponent(btnLimpaComplex)))
                     .addGroup(pnlComplexLayout.createSequentialGroup()
@@ -435,9 +438,13 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+        DefaultPieDataset dataset2 = new DefaultPieDataset();
+        g = new Grafico();
+        Grafico g2 = new Grafico();
+        
         if( jTable1.getRowCount() > 0 )
-        {
-            String tabela[][] = new String[jTable1.getRowCount()][2];
+        {            
             DecimalFormat df = new DecimalFormat("0.00");
             String[] elementos = new String[jTable1.getRowCount()];
             double[] frequencia = new double[jTable1.getRowCount()];
@@ -445,9 +452,10 @@ public class Index extends javax.swing.JFrame {
             for(int i = 0; i < jTable1.getRowCount(); i++){
                 elementos[i] = String.valueOf(((DefaultTableModel)jTable1.getModel()).getValueAt(i, 0));
                 frequencia[i] = Double.parseDouble(String.valueOf(((DefaultTableModel)jTable1.getModel()).getValueAt(i, 1)));
-
-                tabela[i][0] = String.valueOf(((DefaultTableModel)jTable1.getModel()).getValueAt(i, 0));
-                tabela[i][1] = String.valueOf( frequencia[i] );
+                
+                dataset.setValue(frequencia[i], "Profit", String.valueOf(((DefaultTableModel)jTable1.getModel()).getValueAt(i, 0)));
+                dataset2.setValue(String.valueOf(((DefaultTableModel)jTable1.getModel()).getValueAt(i, 0)), frequencia[i]);
+                
 
             }       
 
@@ -476,23 +484,15 @@ public class Index extends javax.swing.JFrame {
             informacoes += "CV - " + df.format( f.coeficienteVariacao( f.desvioPadrao( f.retornaArrayDoubleArrumado(elementos), frequencia), f.media( f.retornaArrayDoubleArrumado( elementos ), frequencia ) ) ) + "\n";
 
             txpInformacoesGeradas.setText(informacoes);
-
-            g = new Grafico();
-            piechart = new Piechart();
-
-            PieDataset dataset = piechart.createDataset(tabela, frequencia, f.soma(frequencia, frequencia.length - 1));
-
-            JFreeChart chart = piechart.createChart(dataset, "Gráfico de setores");
-            
+            JFreeChart chart = ChartFactory.createBarChart("Histograma de Dados", "Classes", "Frequencia", dataset, PlotOrientation.VERTICAL, false, true, true);
+            JFreeChart chart2 = ChartFactory.createPieChart("Setores de Dados", dataset2 , false, true, true);
             ChartPanel chartPanel = new ChartPanel(chart);
-
-            // default tamanho
-            chartPanel.setPreferredSize(new java.awt.Dimension(500, 270));
-
-            // adiciona a nossa aplicação
+            ChartPanel chartPanel2 = new ChartPanel(chart2);
             g.setContentPane(chartPanel);
-
+            g2.setContentPane(chartPanel2);
             g.setVisible(true);
+            g2.setVisible(true);
+            
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -517,6 +517,9 @@ public class Index extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAdicionarSimpleActionPerformed
 
     private void btnCalcularSimpleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularSimpleActionPerformed
+        DefaultCategoryDataset dataset2 = new DefaultCategoryDataset();
+        Grafico g2 = new Grafico();
+        
         if (jTable2.getRowCount() > 0)
         {
             DecimalFormat df = new DecimalFormat("0.00");
@@ -525,10 +528,12 @@ public class Index extends javax.swing.JFrame {
             String[] elementos = new String[jTable2.getRowCount()];
             double[] frequencia = new double[jTable2.getRowCount()];
             for(int i = 0; i < jTable2.getRowCount(); i++){
-                elementos[i] = String.valueOf(((DefaultTableModel)jTable2.getModel()).getValueAt(i, 0));
+                
                 frequencia[i] = Double.parseDouble(String.valueOf(((DefaultTableModel)jTable2.getModel()).getValueAt(i, 1)));
                 tabela[i][0] = String.valueOf(((DefaultTableModel)jTable2.getModel()).getValueAt(i, 0));
                 tabela[i][1] = String.valueOf( frequencia[i] );
+                
+                dataset2.setValue(frequencia[i], "Profit", tabela[i][0]);
             }
 
             String informacao = "Média - " + df.format( f.media( f.retornaVetorDoubleArrumado(elementos), frequencia ) ) + "\n";
@@ -541,18 +546,16 @@ public class Index extends javax.swing.JFrame {
             piechart = new Piechart();
 
             PieDataset dataset = piechart.createDataset(tabela, frequencia, f.soma( frequencia, frequencia.length - 1 ) );
-
             JFreeChart chart = piechart.createChart(dataset, "Gráfico de setores");
-
             ChartPanel chartPanel = new ChartPanel(chart);
-
-            // default tamanho
             chartPanel.setPreferredSize(new java.awt.Dimension(500, 270));
-
-            // adiciona a nossa aplicação
             g.setContentPane(chartPanel);
-
             g.setVisible(true);
+            
+            JFreeChart chart2 = ChartFactory.createBarChart("Histograma de Dados", "Classes", "Frequencia", dataset2, PlotOrientation.VERTICAL, false, true, true);
+            ChartPanel chartPanel2 = new ChartPanel(chart2);
+            g2.setContentPane(chartPanel2);
+            g2.setVisible(true);
         }
     }//GEN-LAST:event_btnCalcularSimpleActionPerformed
 
