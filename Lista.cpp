@@ -22,7 +22,6 @@ class Lista{ // LIFO => Last in First out
       while( valor < this->VET[pos] && pos > -1) // valor < this->VET[ pos ] &&
       {
         this->VET[ pos + 1 ]  = this->VET[ pos ];
-        cout << "Aqui " << pos << endl;
         pos--;
       }
       this->VET[ pos + 1 ] = valor;
