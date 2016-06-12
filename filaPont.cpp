@@ -15,9 +15,9 @@ class No{
   /*
   Classe responsável por criar os nós entre os elementos que compõem os nós da fila.
   
-  \-----------No-------------\        \-----------No---------------\
-  \ NO |  dado |  proxNo \  -\--------\-> NO |  dado |  proxNo \   \
-  \--------------------------\        \----------------------------\
+  |-----------No-------------|        |-----------No---------------|
+  | NO |  dado |  proxNo |---|--------|-> NO |  dado |  proxNo |   |
+  |--------------------------|        |----------------------------|
   */
   public:
     No *proxNo; // Referência para o outro endereço de memória
