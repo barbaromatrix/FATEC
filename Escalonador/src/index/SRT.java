@@ -17,9 +17,9 @@ import javax.swing.table.DefaultTableModel;
  * @author barbaromatrix
  */
 public class SRT extends javax.swing.JFrame {
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     ArrayList iTime, iArrive;
     int iCurTime, iIndex, iTotalTime;
     Timer timer;
@@ -34,8 +34,6 @@ public class SRT extends javax.swing.JFrame {
         iCurTime = 0;
         iTotalTime = 0;
         flag = false;
-        
-        btn_gerar_graficos.setEnabled(false);
     }
 
     /**
@@ -56,7 +54,6 @@ public class SRT extends javax.swing.JFrame {
         btn_adicionar = new javax.swing.JButton();
         btn_limpar = new javax.swing.JButton();
         btn_iniciar = new javax.swing.JButton();
-        btn_gerar_graficos = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_processos = new javax.swing.JTable();
@@ -121,14 +118,6 @@ public class SRT extends javax.swing.JFrame {
             }
         });
 
-        btn_gerar_graficos.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
-        btn_gerar_graficos.setText("Gerar gráficos");
-        btn_gerar_graficos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_gerar_graficosActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnl_formularioLayout = new javax.swing.GroupLayout(pnl_formulario);
         pnl_formulario.setLayout(pnl_formularioLayout);
         pnl_formularioLayout.setHorizontalGroup(
@@ -147,11 +136,10 @@ public class SRT extends javax.swing.JFrame {
                     .addGroup(pnl_formularioLayout.createSequentialGroup()
                         .addComponent(btn_adicionar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_iniciar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btn_iniciar, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE))
                     .addGroup(pnl_formularioLayout.createSequentialGroup()
                         .addComponent(btn_limpar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_gerar_graficos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnl_formularioLayout.setVerticalGroup(
@@ -167,8 +155,7 @@ public class SRT extends javax.swing.JFrame {
                 .addGroup(pnl_formularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txt_duracao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
-                    .addComponent(btn_limpar)
-                    .addComponent(btn_gerar_graficos))
+                    .addComponent(btn_limpar))
                 .addContainerGap())
         );
 
@@ -272,9 +259,9 @@ public class SRT extends javax.swing.JFrame {
                             .addComponent(lbl_informa_processo_atual)
                             .addComponent(lbl_processo_atual))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_informa_tempo_atual)
-                            .addComponent(lbl_tempo_atual))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_tempo_atual, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lbl_informa_tempo_atual))
                         .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_informa_tempo_restante)
@@ -318,11 +305,21 @@ public class SRT extends javax.swing.JFrame {
         jMenuItem2.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         jMenuItem2.setText("Desenvolvedores");
         jMenuItem2.setToolTipText("Responsáveis pelo desenvolvimento");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem2);
 
         jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.SHIFT_MASK));
         jMenuItem3.setFont(new java.awt.Font("Comic Sans MS", 0, 15)); // NOI18N
         jMenuItem3.setText("Versão");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);
@@ -351,9 +348,6 @@ public class SRT extends javax.swing.JFrame {
             flag = true;
         }
 
-        if (btn_gerar_graficos.isEnabled()) {
-            btn_gerar_graficos.setEnabled(false);
-        }
         al = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -378,6 +372,8 @@ public class SRT extends javax.swing.JFrame {
                     }
 
                     if (iIndex >= 0) {
+                        int tempo_restante = (int)( iTime.get(iIndex) ) - 1;
+                        System.out.println("Executando o processo: " + (iIndex + 1) + "\t" + "Tempo restante: " + tempo_restante );
                         int var = Integer.parseInt(String.valueOf(iTime.get(iIndex))) - 1;
                         iTime.set(iIndex, var);
 
@@ -401,9 +397,9 @@ public class SRT extends javax.swing.JFrame {
                     }
                     iCurTime++;
                 } else {
+                    System.out.println("Escalonamento finalizado: " + iTotalTime + " segundos.");
                     JOptionPane.showMessageDialog(null, "O Escalonamento foi finalizado.");
                     timer.stop();
-                    btn_gerar_graficos.setEnabled(true);
                     txt_chegada.setEnabled(true);
                     txt_duracao.setEnabled(true);
 
@@ -443,13 +439,9 @@ public class SRT extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_iniciarActionPerformed
 
-    private void btn_gerar_graficosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_gerar_graficosActionPerformed
-        System.out.println(Integer.parseInt(String.valueOf(iTime.get(0))));
-    }//GEN-LAST:event_btn_gerar_graficosActionPerformed
-
     private void btn_adicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_adicionarActionPerformed
         if (flag) {
-            ((DefaultTableModel) tbl_processos.getModel()).setNumRows(0);
+            ((DefaultTableModel) tbl_processos.getModel()).setNumRows(0);;
             flag = false;
         }
 
@@ -491,6 +483,21 @@ public class SRT extends javax.swing.JFrame {
         txt_chegada.requestFocus();
     }//GEN-LAST:event_btn_limparActionPerformed
 
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        JOptionPane.showMessageDialog(null, "O software foi desenvolvido por: \n"
+                + "Andrei Paixão\n"
+                + "Geovana Silva\n"
+                + "Marcelo Gracioso\n"
+                + "Matheus Galdino\n\n"
+                + "Alunos 3º Ciclo ADS Vespertino - Praia Grande");
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        JOptionPane.showMessageDialog(null, "Simulador de algoritmo SRT\n"
+                + "Disponível no github: https:\\www.github.com\\barbaromatrix\\Escalonador-SRT"
+                + "Versão 1.0\n");
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -528,7 +535,6 @@ public class SRT extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_adicionar;
-    private javax.swing.JButton btn_gerar_graficos;
     private javax.swing.JButton btn_iniciar;
     private javax.swing.JButton btn_limpar;
     private javax.swing.JLabel jLabel1;
