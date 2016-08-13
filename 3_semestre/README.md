@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-# Escalonador SRT
-A college project ( FATEC Praia Grande - SP, Brazil ), where students had to develop a simple algorithm. 
-The code was developed by Marcelo, Geovana, Andrei and me, and our goals was to simulate a process running.
+# 3rd semester ( passed with flying colors :D )
 
-=======
-# FATEC
-Code projects and FATEC stuff
->>>>>>> 2f6117dedef2c30076a4f1518fa44926bcd8881d
+Into this directory, it's based some works that I've done with some college's friends, organized by <b>Programming Languages</b>.
