@@ -1,0 +1,50 @@
+.footer-fixed
+{
+  background-color: black; 
+  color: white; 
+  padding: 2vw; 
+  margin-top: 1vw;
+}
+
+.explanation
+{
+  text-align: justify;
+}
+
+.amortizacao{
+  padding: 20px;
+}
+
+.amortizacao:hover {
+    transition: box-shadow 0.5s;  
+    box-shadow: 5px 0px 40px rgba(0,0,0, .2);
+}
+
+*~.amortizacao{
+  margin-top: 5vw;
+}
+
+.navbar-name-me {
+  margin-top: 0px;
+}
+
+.name-me {
+  background: url("http://receivetipstricks.com/wp-content/uploads/2014/03/atm-to-atm-money-transfer-1024x682.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+	max-width: 100%;
+  height: 30vw;
+}
+.navbar-header > a, .navbar-menu li a {
+  color: white !important;
+}
+
+.name-me > h1, .name-me > h3 {
+  color: white;
+  text-shadow: -1px -1px -.5px white;
+  font-family: 'Raleway', serif;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+}
