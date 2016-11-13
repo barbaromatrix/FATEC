@@ -68,7 +68,7 @@
                 <img src="http://image.flaticon.com/icons/svg/168/168539.svg" alt="Sistema de amortização Americano" style="max-width: 60%" class="img-responsive"/>
             </div>
             <div class="col-md-8 text-center">
-                <h2>(S.A.C)</h2>
+                <h2>Sistema de Amortização Contínua(S.A.C)</h2>
                 <p style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa necessitatibus, eum sit nihil doloribus alias, labore eos exercitationem dolorem explicabo ipsam laboriosam, in neque laborum cumque quidem dignissimos voluptas numquam.</p>
                 <a href="amortizacao_sac.jsp" role="button" class="btn btn-primary btn-md"><i class="glyphicon glyphicon-usd"></i>&nbsp; Quero conhecer!&nbsp; <i class="glyphicon glyphicon-usd"></i></a>
             </div>

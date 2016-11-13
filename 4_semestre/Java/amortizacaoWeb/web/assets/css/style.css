@@ -16,7 +16,7 @@
 }
 
 .amortizacao:hover {
-    transition: box-shadow 0.5s;  
+    transition: box-shadow 0.5s;
     box-shadow: 5px 0px 40px rgba(0,0,0, .2);
 }
 
